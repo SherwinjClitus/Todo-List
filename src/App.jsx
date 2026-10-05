@@ -35,36 +35,40 @@ function App() {
         </div>
         <div className="todo-content">
           <div className="todo-input">
-              {" "}
-              <input
-                type="text"
-                value={newitem}
-                placeholder="Enter a to do item"
-                onChange={handleChange}
-              ></input>
-              {" "}
-              <button className="todo-add-btn" onClick={addItem}>
-                ADD
-              </button>
-            
+            {" "}
+            <input
+              type="text"
+              value={newitem}
+              placeholder="Enter a to do task"
+              onChange={handleChange}
+            ></input>{" "}
+            <button className="todo-add-btn" onClick={addItem}>
+              ADD
+            </button>
           </div>
           <div className="todo-item">
-          <ul>
-            {list.map(function (item) {
-              return (
-                <li>
-                  {item.acitivity}{" "}
-                  <button
-                    onClick={() => {
-                      handleDone(item.id);
-                    }}
-                  >
-                    DONE
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+            {list.length === 0 ? (
+              <p className="empty-message">
+                Nothing to do here... yet! Add your first task above. ✨
+              </p>
+            ) : (
+              <ul>
+                {list.map(function (item) {
+                  return (
+                    <li key={item.id}>
+                      {item.acitivity}
+                      <button
+                        onClick={() => {
+                          handleDone(item.id);
+                        }}
+                      >
+                        DONE
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </div>
         </div>
       </div>
